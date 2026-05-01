@@ -10,4 +10,23 @@
     enabled: yes
 
 
+- name: connect to mysql
+  community.mysql.mysql_db:
+  login_host: mysql.daws82s.fun
+  login_user: root
+  login_password: "{{ root_password }}"  
+  register: mysql_details
+  ignore_errors: true
+
+
+- name: print the output
+  ansible.builtin.debug:
+    msg: "{{ mysql_details }}" 
+
+
+- name: set up root_password
+  ansible.builtin.command: mysql_secure_installation --set-root-pass "{{ root_password }}"
+  when: mysql_info.failed is true       
+
+
   
