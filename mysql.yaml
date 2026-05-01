@@ -1,5 +1,5 @@
 - name: install MYSQL server
-  hosts: mysql
+  hosts: web
   become: yes
 
 
