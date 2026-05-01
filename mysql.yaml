@@ -1,9 +1,7 @@
-- name: installing mysql server on managed node
-  hosts: web
+- name: install MYSQL server
+  hosts: mysql
   become: yes
 
-  tasks:
-    - name: installing mysql
-      ansible.builtin.package:
-      name: mysql
-      state: present
+
+  roles:
+  - mysql
